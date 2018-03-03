@@ -1,0 +1,78 @@
+
+    <li>
+        <div class="header">
+            <div class="row">
+                <div class="col s4">
+                </div>
+                <div class="col s4">
+                    <div class="title-image"></div>
+                </div>
+                <div class="col s4">
+                    <i class="material-icons help-icon">
+                        help_outline
+                    </i>
+                </div>
+            </div>
+
+            <h1 class="title-text">¿Lo sentiste?</h1>
+            <div class="row search-bar-row">
+                <div class="input-field col s12 search-bar">
+                    <i class="material-icons prefix search">search</i>
+                    <input id="search-input" type="text" class="validate">
+                    <label class="search-label" for="search-input">
+                        Buscar otros sismos
+                    </label>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div id="cards-section" class="cards" ng-controller="EarthquakesListCtrl" ng-init="fetchEarthquakes()">
+                <div  ng-repeat="earthquake in earthquakes" class="card-container " ng-class="isActive($index)" >
+                    <div    class="card"  >
+                        <div class="card-content" ng-click="setCurrent($index)">
+                            <div class="row">
+                                <div class="col s3 earthquake-image {{getMagnitudeColor(earthquake.magnitude)}}-icon">
+                                </div>
+                                <div class="col s3">
+                                    <p class="magnitude-text">{{earthquake.magnitude}}</p>
+                                    <p class="unit-text">Mw</p>
+                                </div>
+                                <div class="col s1">
+                                    <div class="left-divider">
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <!-- <p class="time-text">Hace {{earthquake.timeStamp}}</p> -->
+                                    <p class="time-text">{{earthquake.date | dateFilter}}</p>
+                                    <p class="location-text" location-filter>{{earthquake.location | locationFilter}}</p>
+                                </div> 
+                            </div>
+                        </div>
+                
+                        <div class="card-action">
+                            <div class=row>
+                                <div class="col s8">
+                                    <a href="/mapa_promediado/{{earthquake.id}}">Mapa Promediado</a>
+                                </div>
+                                <div class="col s4">
+                                    <a href="#!/earthquake-form">Reportar</a>
+                                </div>
+                            </div>
+                
+                        </div>
+                
+                    </div>
+                </div>
+        </div>
+        <div class="row seemore ">
+            <a class="">Ver más</a>
+
+        </div>
+        <div class="link-container fixed">
+                <a href="#FormularioSismo" class=" modal-trigger">¿Sentiste un sismo que no aparece?</a>
+             </div> 
+    </li>
+    <li>
+            
+    </li>
