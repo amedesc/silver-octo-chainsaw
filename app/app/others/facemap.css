@@ -1,0 +1,61 @@
+/* CSS de animación de https://codepen.io/athimannil/pen/MaXxwv?q=pulse+animation&limit=all&type=type-pens */
+.pulse-box {
+	position: absolute;
+	float: left;
+	width: 50%;
+	height: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  /* pulse in SVG */
+  svg.pulse-svg {
+	overflow: visible;
+  }
+  svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-circle {
+	fill: #f00;
+	
+	transform: scale(0.5); 
+	-webkit-transform: scale(0.5); 
+	-moz-transform: scale(0.5); 
+	
+	transform-origin: center center;
+	-webkit-transform-origin: center center;
+	-moz-transform-origin: 10px 10px;
+	
+	animation: pulse-me 3s linear infinite;	
+	-webkit-animation: pulse-me 3s linear infinite;
+	-moz-animation: pulse-me 3s linear infinite;
+  }
+  svg.pulse-svg .second-circle {
+	animation-delay: 1s;
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+  }
+  svg.pulse-svg .third-circle {
+	animation-delay: 2s;
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+  }
+
+  @keyframes pulse-me {
+	0% {
+	  transform: scale(0.5);
+	  -webkit-transform: scale(0.5);
+	  -moz-transform: scale(0.5);
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 0.1;
+	}
+	70% {
+	  opacity: 0.09;
+	}
+	100% {
+	  transform: scale(5);
+	  -webkit-transform: scale(5);
+	  -moz-transform: scale(5);
+	  opacity: 0;
+	}
+  }

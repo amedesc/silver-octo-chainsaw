@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="losentisteApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Lo sentiste?</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="others/facemap.css">
+</head>
+<body>
+  
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <a href="#" data-activates="slide-out" class="button-collapse">
+		<i class="material-icons">menu</i>
+	</a>
+  <ul id="slide-out" class="side-nav fixed">
+  <div ng-view></div>
+  </ul>
+  <div class="map-container">
+		<div id="map"></div>
+	</div>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="others/load_options.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="components/cards-list/location-filter.js"></script>
+  <script type="text/javascript" src="earthquakes-list/earthquakes-list.js"></script>
+  <script type="text/javascript" src="earthquakes-list/earthquakes-service.js"></script>
+
+  <script type="text/javascript" src="earthquake-form/earthquake-form.js"></script>
+  <script type="text/javascript" src="earthquake-form/form-service.js"></script>
+  <script type="text/javascript" src="components/search-bar/searchbar.js"></script>
+  <script type="text/javascript" src="components/search-bar/searchbar-directive.js"></script>
+  
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7d4imtqE2zEzrFZE91XxiPjf0DgwbDxM&libraries=places&sensor=false"></script>
+  <script type="text/javascript" src="others/facemap.js"></script>
+  <script type="text/javascript" src="lib/locationpicker.jquery.min.js"></script>
+  <script type="text/javascript" src="lib/angularLocationpicker.jquery.min.js"></script>
+  
+</body>
+</html>

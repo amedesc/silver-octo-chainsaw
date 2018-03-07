@@ -1,0 +1,150 @@
+
+<div class="card-title">
+  <div class="row">
+    <a href="#!/earhquakes-list">
+      <i class="material-icons" >close</i>
+    </a>
+  </div>
+  <div id="1" class="card-container ">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s3 earthquake-image green-icon">
+          </div>
+          <div class="col s3">
+            <p class="magnitude-text">3.5</p>
+            <p class="unit-text">Mw</p>
+          </div>
+          <div class="col s1">
+            <div class="left-divider">
+            </div>
+          </div>
+          <div class="col s5">
+            <p class="time-text">Hace ochenta min</p>
+            <p class="location-text">Chepe, chepe</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-action">
+        <div class=row>
+          <div class="col s8">
+            <a href="/mapa_promediado/1">Mapa Promediado</a>
+          </div>
+          <div class="col s4">
+            <a href="/reporte/1">Reportar</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div ng-controller="EarthquakeFormCtrl">
+  <div ng-show="!showEnd"  ng-init="getQuestions()">
+      <li class="progress-form">
+          <div class="row">
+            <div class="progress">
+              <div class="determinate" ng-style="{'width': (currentQuestion/questions_array.length)*100 +'%' }" ></div>
+            </div>
+            <i class="material-icons" ng-click="gobackQuestion()">arrow_back</i>
+            <p>{{currentQuestion}}/{{questions_array.length}}</p>
+          </div>
+        
+        </li>
+        <li ng-repeat="question in questions_array" id="{{'q' + question.id}}" class="question" ng-show="isQuestionActive(question.id)">
+          <div class="row">
+            <h5>{{question.text}}</h5>
+          </div>
+          <div class="row" ng-repeat="answer in question.answers | orderBy:'id'">
+            <a class="waves-effect waves-teal btn-flat" ng-class="selected" ng-click="advanceQuestion()" ng-show="answer.type == 'answer'">{{answer.text}}</a>
+            <a class="waves-effect waves-teal btn-flat" ng-click="showSubanswers(answer)" ng-show="answer.type == 'tag'">{{answer.text}}</a>
+            <div ng-repeat="subanswer in answer.subanswers | orderBy:'id'"class="sub-question" ng-show="subanswer.visible" ng-show="answer.type == 'tag'">
+              <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()" >{{subanswer.text}}</a>
+            </div>
+           
+          </div>
+          <div class="row">
+            <locationpicker options="locationpickerOptions" ng-show="question.type == 'location'"></locationpicker>
+          </div>
+          <div class="row">
+            <input placeholder="Buscar otra ubicación" id="search-bar" type="text" ng-show="question.type == 'location'" class="validate" searchbar>
+          </div>
+          <div class="row">
+            <a id="next-btn" class="waves-effect waves-light btn-large" ng-click="advanceQuestion()" ng-show="question.type== 'location'">Siguiente</a>
+          </div>
+          <!-- <div class="row">
+            <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()">No</a>
+          </div> -->
+        </li>
+        <!-- <li id="q0" class="question" ng-show="isQuestionActive(1)">
+          <div class="row">
+            <h5>¿Lo sentiste?</h5>
+          </div>
+          <div class="row">
+            <a class="waves-effect waves-teal btn-flat selected" ng-click="advanceQuestion()">Si</a>
+          </div>
+          <div class="row">
+            <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()">No</a>
+          </div>
+        </li>
+        <li id="q1" class="question" ng-show="isQuestionActive(2)" >
+          <div class="row">
+            <h5>¿Donde estabas?</h5>
+          </div>
+          <div class="row">
+            <locationpicker options="locationpickerOptions"></locationpicker>
+          </div>
+          <div class="row">
+            <input placeholder="Buscar otra ubicación" id="search-bar" type="text" class="validate" searchbar>
+          </div>
+          <div class="row">
+              <a id="next-btn" class="waves-effect waves-light btn-large" ng-click="advanceQuestion()" >Siguiente</a>
+            </div>
+        </li>
+        <li id="q0" class="question" ng-show="isQuestionActive(3)">
+          <div class="row">
+            <h5>¿En qué lugar?</h5>
+          </div>
+          <div class="row">
+            <a class="waves-effect waves-teal btn-flat" ng-click="showSubquestions()">Dentro de una edificación</a>
+            
+          </div>
+          <div class="sub-question" ng-show="subquestion">
+              <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()">Piso 1 o 2</a>
+            </div>
+            <div class="sub-question" ng-show="subquestion">
+                <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()">Piso 3 o más</a>
+              </div>  
+          <div class="row">
+            <a class="waves-effect waves-teal btn-flat" ng-click="advanceQuestion()">En la calle</a>
+          </div>
+        </li> -->
+ 
+  </div>
+  <div ng-show="showEnd">
+      <li  class="end-message">
+        
+          <h1>¡Gracias por reportar!</h1>
+          <h2>Lo sentiste con una intensidad de:</h2>
+          <div class="blue-big-marker"></div>
+          <h3>3</h3>
+          <h4>Moderado</h4>
+          <textarea id="textarea1"  placeholder="Dejar un comentario..."></textarea>
+          <div class="row">
+            <a id="next-btn" class="waves-effect waves-light btn-large" href="#!/earthquakes-list">Listo</a>
+          </div>   
+      </li>
+      <li>
+          <div class="link-container">
+              <a href="#FormularioSismo" class=" modal-trigger">Hacer un reporte adicional</a>
+              <!-- Modal Structure -->
+           </div>
+       
+      </li>
+  </div>
+  
+    
+  
+</div>
